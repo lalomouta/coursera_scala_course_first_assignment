@@ -42,18 +42,22 @@ object Lists {
    * @throws java.util.NoSuchElementException if `xs` is an empty list
    */
   def max(xs: List[Int]): Int = {
-    if(xs.nonEmpty){
-      if(xs.size > 1){
-        if(xs.head > max(xs.tail)){
-          xs.head
+    try{
+      if (xs.nonEmpty) {
+        if (xs.size > 1) {
+          if (xs.head > max(xs.tail)) {
+            xs.head
+          } else {
+            max(xs.tail)
+          }
         } else {
-          max(xs.tail)
+          xs.head
         }
       } else {
-        xs.head
+        0
       }
-    } else {
-      0
+    } catch {
+      case _ => throw java.util.NoSuchElementException
     }
   }
 }
