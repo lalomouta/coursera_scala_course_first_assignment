@@ -16,16 +16,18 @@ object Lists {
    *  - `xs.tail: List[Int]` returns the tail of the list `xs`, i.e. the the
    *    list `xs` without its `head` element
    *
-   *  ''Hint:'' instead of writing a `for` or `while` loop, think of a recursive
-   *  solution.
+   * ''Hint:'' instead of writing a `for` or `while` loop, think of a recursive
+   * solution.
    *
    * @param xs A list of natural numbers
    * @return The sum of all elements in `xs`
    */
   def sum(xs: List[Int]): Int = {
-    if(xs.nonEmpty){
+    if (xs.nonEmpty) {
       xs.head + sum(xs.tail)
-    } else {0}
+    } else {
+      0
+    }
   }
 
   /**
@@ -42,7 +44,7 @@ object Lists {
    * @throws java.util.NoSuchElementException if `xs` is an empty list
    */
   def max(xs: List[Int]): Int = {
-    try{
+
       if (xs.nonEmpty) {
         if (xs.size > 1) {
           if (xs.head > max(xs.tail)) {
@@ -54,10 +56,8 @@ object Lists {
           xs.head
         }
       } else {
-        0
+        throw new NoSuchElementException()
       }
-    } catch {
-      case _ => throw java.util.NoSuchElementException
-    }
+
   }
 }
